@@ -1,6 +1,8 @@
 package demo.entity;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -35,14 +38,15 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category categories;
 
+    @OneToMany(mappedBy = "products")
+    private List<warehouse> warehouses = new ArrayList<>();
+    
 	public Product() {
 		super();
 	}
 
-	
-
 	public Product(int id, String name, String status, float price, float sale_price, String image, Date created_date,
-			Category categories) {
+			Category categories, List<warehouse> warehouses) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -52,9 +56,8 @@ public class Product {
 		this.image = image;
 		this.created_date = created_date;
 		this.categories = categories;
+		this.warehouses = warehouses;
 	}
-
-
 
 	public int getId() {
 		return id;
@@ -70,6 +73,14 @@ public class Product {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public float getPrice() {
@@ -112,13 +123,17 @@ public class Product {
 		this.categories = categories;
 	}
 
-	public String getStatus() {
-		return status;
+	public List<warehouse> getWarehouses() {
+		return warehouses;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setWarehouses(List<warehouse> warehouses) {
+		this.warehouses = warehouses;
 	}
+	
+	
+
+
 	
     
 }

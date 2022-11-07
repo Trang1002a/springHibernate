@@ -25,30 +25,50 @@
 			</div>
 		</div>
 		<div class="box-body">
-			<form:form action="insertProduct" modelAttribute="pro" method="post">
-				<div class="form-group">
-					<label>Product Name</label>
-
-					<form:input path="name" cssClass="form-control" required="required" />
-
-					<form:errors path="name" cssClass="erorr" />
-				</div>
-				<div class="form-group">
-					<label for="">Trạng thái</label>
-					<div class="radio">
-						<label> <form:radiobutton path="status" value="1"/>Hiển thị
-						</label>
+			<form:form method="post" action="insertProduct" modelAttribute="pro"
+				enctype="multipart/form-data">
+				<div class="row">
+					<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+						<div class="form-group">
+							<label for="">Product Name :</label>
+							<form:input path="name" cssClass="form-control" /><br>
+							
+						</div>
+						<div class="form-group">
+							<label for="">Image :</label> <input type="file"
+								class="form-control" name="upload" id="upload"
+								placeholder="Ảnh sản phẩm "> <img src="" id="show_image"
+								alt="" style="width: 300px">
+						</div>
+						<div class="form-group">
+							<label for="">Status:</label>
+							
+							<div class="radio">
+								<label><form:radiobutton path="status" value="1" />
+									Show </label>
+							</div>
+							<div class="radio">
+								<label><form:radiobutton path="status" value="0" />
+									Hidden </label>
+							</div>
+						</div>
+						<button type="submit" class="btn btn-primary">Add NEW</button>
 					</div>
-					<div class="radio">
-						<label> <form:radiobutton path="status" value="0" />Ẩn
-						</label>
+					<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+						<div class="form-group">
+							<label for="">Category :</label>
+							<form:select path="categories.id" cssClass="form-control">
+								<form:options items="${list}" itemLabel="name" itemValue="id" />
+							</form:select><br>
+						</div>
+						<div class="form-group">
+							<label for="">Price:</label>
+							<form:input path="price" cssClass="form-control" /><br>
+							
+						</div>
+
 					</div>
-
-
-					<form:errors path="status" cssClass="erorr" />
 				</div>
-
-				<button type="submit" class="btn btn-primary">Add New</button>
 			</form:form>
 		</div>
 	</div>

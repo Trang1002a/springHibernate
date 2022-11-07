@@ -187,7 +187,7 @@
 				<!-- sidebar menu: : style can be found in sidebar.less -->
 				<ul class="sidebar-menu" data-widget="tree">
 					<li class="treeview"><a href="#"> <i
-							class="fa fa-dashboard"></i> <span>Category</span> <span
+							class="fa fa-dashboard"></i> <span>Danh mục</span> <span
 							class="pull-right-container"> <i
 								class="fa fa-angle-left pull-right"></i>
 						</span>
@@ -202,7 +202,7 @@
 				</ul>
 				<ul class="sidebar-menu" data-widget="tree">
 					<li class="treeview"><a href="#"> <i
-							class="fa fa-dashboard"></i> <span>Product</span> <span
+							class="fa fa-dashboard"></i> <span>Sản phẩm</span> <span
 							class="pull-right-container"> <i
 								class="fa fa-angle-left pull-right"></i>
 						</span>
@@ -217,14 +217,16 @@
 				</ul>
 				<ul class="sidebar-menu" data-widget="tree">
 					<li class="treeview"><a href="#"> <i
-							class="fa fa-dashboard"></i> <span>Orders</span> <span
+							class="fa fa-dashboard"></i> <span>Quản lý kho</span> <span
 							class="pull-right-container"> <i
 								class="fa fa-angle-left pull-right"></i>
 						</span>
 					</a>
 						<ul class="treeview-menu">
-							<li><a href="${pageContext.request.contextPath}/order/data"><i
-									class="fa fa-circle-o"></i>Order Details</a></li>
+							<li><a href="${pageContext.request.contextPath}/warehouse/importProduct"><i
+									class="fa fa-circle-o"></i>Nhập kho</a></li>
+							<li><a href="${pageContext.request.contextPath}/warehouse/exportProduct"><i
+							class="fa fa-circle-o"></i>Xuất kho</a></li>
 						</ul></li>
 				</ul>
 			</section>

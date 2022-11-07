@@ -31,7 +31,6 @@ import org.springframework.web.multipart.MultipartFile;
 import demo.Service.CategoryDaoImpl;
 import demo.Service.IService;
 import demo.entity.Category;
-import demo.entity.CategoryView;
 import demo.entity.Product;
 
 @Controller

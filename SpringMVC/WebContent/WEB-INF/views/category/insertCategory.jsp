@@ -29,7 +29,7 @@
 				<div class="form-group">
 					<label>Category Name</label>
 
-					<form:input path="name" cssClass="form-control" required="required" />
+					<form:input path="name" cssClass="form-control"/>
 
 					<form:errors path="name" cssClass="erorr" />
 				</div>

@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "tbl_category")
@@ -20,6 +21,7 @@ public class Category {
     @Column(name = "id")
     private int id;
     @Column(name = "name")
+    @NotEmpty(message = "Khong de trong")
     private String name;
     @Column(name = "status")
     private int status;
@@ -32,7 +34,10 @@ public class Category {
 		super();
 	}
 
-	public Category(int id, String name, int status, Date created_date, List<Product> products) {
+	
+
+	public Category(int id, @NotEmpty(message = "Khong de trong") String name, int status, Date created_date,
+			List<Product> products) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -40,6 +45,8 @@ public class Category {
 		this.created_date = created_date;
 		this.products = products;
 	}
+
+
 
 	public int getId() {
 		return id;

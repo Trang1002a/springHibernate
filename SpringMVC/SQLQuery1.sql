@@ -2,8 +2,6 @@ use master
 go
 create database C2103LM_BTL
 go
-drop table tbl_category
-drop table tbl_product
 use C2103LM_BTL
 go
 create table tbl_category
@@ -24,6 +22,15 @@ create table tbl_product
     image varchar(200),
     created_date datetime DEFAULT(getdate()),
     category_id int FOREIGN KEY REFERENCES tbl_category(id)
+)
+go
+create table tbl_warehouse
+(
+	id int primary key identity,
+	product_id int FOREIGN KEY REFERENCES tbl_product(id),
+	product_name nvarchar(50),
+	quantity int,
+	status int default(0) 
 )
 go
 INsert into tbl_category(name, status) Values

@@ -30,43 +30,7 @@
 			</div>
 		</div>
 		<div class="box-body">
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Category Name</th>
-						<th>Product Name</th>
-						<th>Product image</th>
-						<th>Status</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${pros}" var="pro">
-						<tr>
-							<td>${pro.id}</td>
-							<td>${pro.categories.name}</td>
-							<td>${pro.name}</td>
-							<td>
-							<img src="${pageContext.request.contextPath}/resources/images/${pro.image}" />
-							</td>
-							<td><c:choose>
-									<c:when test="${pro.status == 1}">
-										<span class="label label-success">Hiện thị</span>
-									</c:when>
-									<c:when test="${pro.status == 0}">
-										<span class="label label-danger">Ẩn</span>
-									</c:when>
-								</c:choose></td>
-							<td><a class="btn btn-small btn-success"
-								href="${pageContext.request.contextPath}/product/edit?id=${pro.id}">Sửa</a>
-								<a class="btn btn-small btn-danger"
-								href="${pageContext.request.contextPath}/product/delete?id=${pro.id}"
-								onclick="return confirm('Bạn có muốn xóa không ?')">Xóa</a></td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+			<h1>Import Product</h1>
 		</div>
 		<!-- /.box-body -->
 		<!-- /.box-footer-->
