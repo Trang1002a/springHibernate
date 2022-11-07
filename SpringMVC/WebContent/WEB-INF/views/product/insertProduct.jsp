@@ -31,8 +31,9 @@
 					<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
 						<div class="form-group">
 							<label for="">Product Name :</label>
-							<form:input path="name" cssClass="form-control" /><br>
-							
+							<form:input path="name" cssClass="form-control" />
+							<br>
+
 						</div>
 						<div class="form-group">
 							<label for="">Image :</label> <input type="file"
@@ -41,16 +42,19 @@
 								alt="" style="width: 300px">
 						</div>
 						<div class="form-group">
-							<label for="">Status:</label>
-							
+							<label for="">Trạng thái</label>
 							<div class="radio">
-								<label><form:radiobutton path="status" value="1" />
-									Show </label>
+								<label> <form:radiobutton path="status" value="1" checked = "checked"/>Hiển
+									thị
+								</label>
 							</div>
 							<div class="radio">
-								<label><form:radiobutton path="status" value="0" />
-									Hidden </label>
+								<label> <form:radiobutton path="status" value="0" />Ẩn
+								</label>
 							</div>
+
+
+							<form:errors path="status" cssClass="erorr" />
 						</div>
 						<button type="submit" class="btn btn-primary">Add NEW</button>
 					</div>
@@ -59,12 +63,20 @@
 							<label for="">Category :</label>
 							<form:select path="categories.id" cssClass="form-control">
 								<form:options items="${list}" itemLabel="name" itemValue="id" />
-							</form:select><br>
+							</form:select>
+							<br>
 						</div>
 						<div class="form-group">
-							<label for="">Price:</label>
-							<form:input path="price" cssClass="form-control" /><br>
-							
+							<label for="">Price</label>
+							<form:input path="price" cssClass="form-control" />
+							<br>
+
+						</div>
+						<div class="form-group">
+							<label for="">Sale Price</label>
+							<form:input path="sale_price" cssClass="form-control" />
+							<br>
+
 						</div>
 
 					</div>

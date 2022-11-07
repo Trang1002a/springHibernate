@@ -56,7 +56,9 @@ public class ProductController {
 	@RequestMapping(value = { "/edit" })
 	public String getListProduct(@RequestParam("id") int id, Model model) {
 		Product product = (Product) productDao.findById(id);
+		List<Category> list = categoryDao.findAll();
 		model.addAttribute("pro", product);
+		model.addAttribute("list", list);
 		return "product/edit";
 	}
 

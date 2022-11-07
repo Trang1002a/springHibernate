@@ -12,9 +12,6 @@
 	<context:component-scan base-package="demo"></context:component-scan>
 	<mvc:annotation-driven />
 
-	<mvc:resources mapping="/resources/**" location="/css/"
-		cache-period="31556926" />
-
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />
