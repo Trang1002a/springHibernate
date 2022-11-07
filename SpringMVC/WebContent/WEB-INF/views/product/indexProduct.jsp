@@ -15,7 +15,7 @@
 				<button type="submit" class="btn btn-primary">
 					<i class="fa fa-search" aria-hidden="true"></i>
 				</button>
-				<a href="${pageContext.request.contextPath}/product/insertproduct"
+				<a href="${pageContext.request.contextPath}/product/insertProduct"
 					class="btn btn-success btn-sm">Thêm mới</a>
 			</form>
 			<div class="box-tools pull-right">
@@ -47,9 +47,7 @@
 							<td>${pro.id}</td>
 							<td>${pro.categories.name}</td>
 							<td>${pro.name}</td>
-							<td>
-							<img src="${pageContext.request.contextPath}/resources/images/${pro.image}" />
-							</td>
+							<td><img src="<c:url value="/resources/images/${pro.image }"/>" width="60px"></td>
 							<td><c:choose>
 									<c:when test="${pro.status == 1}">
 										<span class="label label-success">Hiện thị</span>
