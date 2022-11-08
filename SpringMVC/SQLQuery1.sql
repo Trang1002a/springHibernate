@@ -8,6 +8,7 @@ drop table tbl_product
 go
 drop table tbl_category
 go
+drop table tbl_warehouse
 create table tbl_category
 (
     id int primary key identity,
@@ -47,7 +48,7 @@ INsert into tbl_category(name, status) Values
 ( N'IPHONE 13', 1),
 ( N'IPHONE 14', 1)
 go
-insert into tbl_product(name,price,sale_price,image, category_id) VALUES
+insert into tbl_product(name,status,price,sale_price,image, category_id) VALUES
 (N'Iphone 6 Plus', 1, 6500000, 0, '', 1),
 (N'Iphone 7', 1, 7000000, 0, 'iphone-7.jpg', 2),
 (N'Iphone 7 Plus', 1, 7500000, 0, 'iphone-7.jpg', 2),

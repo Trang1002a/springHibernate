@@ -38,9 +38,15 @@ public class ProductController {
 	private ServletContext servletContext;
 
 	@RequestMapping(value = { "", "/index" })
-	public String getListProduct(Model model) {
-		List<Product> products = productDao.findAll();
+	public String getListProduct(Model model,
+			@RequestParam(value = "page", required = false, defaultValue = "1") int page) {
+		int pageSize = 10;
+		int firstResult = (page - 1) * pageSize;
+		List<Product> products = productDao.findAll(firstResult, pageSize);
+		Long totalRecords = productDao.countTotalRecords();
 		model.addAttribute("pros", products);
+		model.addAttribute("totalRecords", totalRecords);
+		model.addAttribute("page", page);
 		return "product/indexProduct";
 	}
 

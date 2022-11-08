@@ -6,7 +6,9 @@ import demo.entity.Category;
 
 public interface IService<T, ID> {
 	List<T> findAll();
+	List<T> findAll(int position, int pageSize);
 	T findById(ID id);
 	T save(T category);
 	boolean deleteById(ID id);
+	Long countTotalRecords();
 }

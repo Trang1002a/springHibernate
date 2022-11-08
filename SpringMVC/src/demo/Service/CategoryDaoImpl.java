@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -89,6 +90,20 @@ public class CategoryDaoImpl implements IService<Category, Integer> {
 			return false;
 		}
 
+	}
+
+	@Override
+	public List<Category> findAll(int position, int pageSize) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Long countTotalRecords() {
+		Session session = sessionFactory.openSession();
+		String countQ = "Select count (c.id) from tbl_category c";
+		Query countQuery = session.createQuery(countQ);
+		return (Long) countQuery.uniqueResult();
 	}
 
 }

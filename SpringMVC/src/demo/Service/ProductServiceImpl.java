@@ -2,8 +2,10 @@ package demo.Service;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -86,6 +88,34 @@ public class ProductServiceImpl implements IService<Product, Integer> {
 			session.close();
 			return false;
 		}
+	}
+
+	
+	@Override
+	public List<Product> findAll(int position, int pageSize) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+
+		try {
+			session.beginTransaction();
+			Criteria criteria = session.createCriteria(Product.class);
+			criteria.setFirstResult(position);
+			criteria.setMaxResults(pageSize);
+			return criteria.list();
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+			session.close();
+		}
+		return null;
+	}
+
+	@Override
+	public Long countTotalRecords() {
+		Session session = sessionFactory.openSession();
+		String countQ = "Select count (p.id) from Product p";
+		Query countQuery = session.createQuery(countQ);
+		return (Long) countQuery.uniqueResult();
 	}
 
 }
