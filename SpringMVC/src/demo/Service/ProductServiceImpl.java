@@ -5,6 +5,8 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -109,13 +111,37 @@ public class ProductServiceImpl implements IService<Product, Integer> {
 		}
 		return null;
 	}
+	
+	@Override
+	public List<Product> findAll(int position, int pageSize, String name) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+
+		try {
+			session.beginTransaction();
+			Criteria criteria = session.createCriteria(Product.class).add( Restrictions.like("name", "%" +name +"%"));
+			criteria.setFirstResult(position);
+			criteria.setMaxResults(pageSize);
+			return criteria.list();
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+			session.close();
+		}
+		return null;
+	}
 
 	@Override
-	public Long countTotalRecords() {
+	public Long countTotalRecords(String name) {
 		Session session = sessionFactory.openSession();
-		String countQ = "Select count (p.id) from Product p";
-		Query countQuery = session.createQuery(countQ);
-		return (Long) countQuery.uniqueResult();
+		Long count;
+		if(name == null) {
+			count = (Long) session.createCriteria(Product.class).setProjection(Projections.rowCount()).uniqueResult();
+		} else {
+			count = (Long) session.createCriteria(Product.class).setProjection(Projections.rowCount())
+					.add(Restrictions.like("name", "%" + name + "%")).uniqueResult();
+		}
+		return count;
 	}
 
 }

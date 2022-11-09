@@ -7,11 +7,11 @@
 	<div class="box">
 		<div class="box-header with-border">
 			<h3 class="box-title"></h3>
-			<form action="searchProducts" method="get" class="form-inline"
+			<form action="" method="get" class="form-inline"
 				role="form">
 				<div class="form-group">
 					<input oninput="searchByName(this)" id="content" type="text"
-						name="key" class="form-control" placeholder="Tìm kiếm ...">
+						name="name" class="form-control" placeholder="Tìm kiếm ...">
 				</div>
 				<button type="submit" class="btn btn-primary">
 					<i class="fa fa-search" aria-hidden="true"></i>
@@ -68,7 +68,8 @@
 								href="${pageContext.request.contextPath}/product/edit?id=${pro.id}">Sửa</a>
 								<a class="btn btn-small btn-danger"
 								href="${pageContext.request.contextPath}/product/delete?id=${pro.id}"
-								onclick="return confirm('Bạn có muốn xóa không ?')">Xóa</a></td>
+								onclick="return confirm('Bạn có muốn xóa không ?')">Xóa</a>
+								</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -81,7 +82,8 @@
 				<ul class="pagination">
 					<c:forEach begin="1" end="${Math.ceil(totalRecords/10)}" var="i">
 						<li class="page-item"><a class="page-link" id="${i}"
-							href="${pageContext.request.contextPath}/product?page=${i}">${i}</a>
+						
+							href="${pageContext.request.contextPath}/product?<c:if test="${name != ''}">name=${name}&</c:if>page=${i}">${i}</a>
 						</li>
 					</c:forEach>
 				</ul>

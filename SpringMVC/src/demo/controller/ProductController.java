@@ -39,14 +39,24 @@ public class ProductController {
 
 	@RequestMapping(value = { "", "/index" })
 	public String getListProduct(Model model,
-			@RequestParam(value = "page", required = false, defaultValue = "1") int page) {
+			@RequestParam(value = "page", required = false, defaultValue = "1") int page,
+			@RequestParam(value = "name", required = false, defaultValue = "") String name) {
 		int pageSize = 10;
 		int firstResult = (page - 1) * pageSize;
-		List<Product> products = productDao.findAll(firstResult, pageSize);
-		Long totalRecords = productDao.countTotalRecords();
+		List<Product> products;
+		Long totalRecords;
+		if(name == "") {
+			totalRecords = productDao.countTotalRecords(null);
+			products = productDao.findAll(firstResult, pageSize);
+		} else {
+			totalRecords = productDao.countTotalRecords(name);
+			products = productDao.findAll(firstResult, pageSize, name);
+		}
+		
 		model.addAttribute("pros", products);
 		model.addAttribute("totalRecords", totalRecords);
 		model.addAttribute("page", page);
+		model.addAttribute("name", name);
 		return "product/indexProduct";
 	}
 
@@ -97,17 +107,31 @@ public class ProductController {
 
 	@PostMapping(value = "/updateProduct")
 	public String updateProduct(@Valid @ModelAttribute("prod") Product product, BindingResult bindingResult,
-			Model model) throws IOException {
+			@RequestParam("upload") MultipartFile file, Model model) throws IOException {
 		String view = "";
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("pro", product);
 			view = "product/edit?id=" + product.getId();
 		} else {
+			String nameImg = file.getOriginalFilename();
+			if(nameImg == "") {
+				Product productDetail = (Product) productDao.findById(product.getId());
+				product.setImage(productDetail.getImage());
+			} else {
+				String fileName = servletContext.getRealPath("/") + "resources\\images\\" + file.getOriginalFilename();
+				product.setImage(file.getOriginalFilename());
+				try {
+					file.transferTo(new File(fileName));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			
 			Product products = (Product) productDao.save(product);
 			if (!Objects.isNull(products)) {
 				view = "redirect:/product";
 			} else {
-				model.addAttribute("product", product);
+				model.addAttribute("pro", product);
 				view = "product/edit?id=" + product.getId();
 			}
 		}

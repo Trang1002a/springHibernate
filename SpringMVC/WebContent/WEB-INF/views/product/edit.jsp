@@ -25,8 +25,9 @@
 			</div>
 		</div>
 		<div class="box-body">
-			<form:form method="post" action="insertProduct" modelAttribute="pro"
+			<form:form method="post" action="updateProduct" modelAttribute="pro"
 				enctype="multipart/form-data">
+				<form:input path="id" type="hidden" value="${pro.id}"/>
 				<div class="row">
 					<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
 						<div class="form-group">
