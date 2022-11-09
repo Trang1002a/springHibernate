@@ -39,14 +39,14 @@ public class Product {
     private Category categories;
 
     @OneToMany(mappedBy = "products")
-    private List<warehouse> warehouses = new ArrayList<>();
+    private List<Warehouse> warehouses = new ArrayList<>();
     
 	public Product() {
 		super();
 	}
 
 	public Product(int id, String name, String status, float price, float sale_price, String image, Date created_date,
-			Category categories, List<warehouse> warehouses) {
+			Category categories, List<Warehouse> warehouses) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -123,11 +123,11 @@ public class Product {
 		this.categories = categories;
 	}
 
-	public List<warehouse> getWarehouses() {
+	public List<Warehouse> getWarehouses() {
 		return warehouses;
 	}
 
-	public void setWarehouses(List<warehouse> warehouses) {
+	public void setWarehouses(List<Warehouse> warehouses) {
 		this.warehouses = warehouses;
 	}
 	

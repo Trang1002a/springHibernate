@@ -45,14 +45,14 @@ public class ProductController {
 		int firstResult = (page - 1) * pageSize;
 		List<Product> products;
 		Long totalRecords;
-		if(name == "") {
+		if (name == "") {
 			totalRecords = productDao.countTotalRecords(null);
 			products = productDao.findAll(firstResult, pageSize);
 		} else {
 			totalRecords = productDao.countTotalRecords(name);
 			products = productDao.findAll(firstResult, pageSize, name);
 		}
-		
+
 		model.addAttribute("pros", products);
 		model.addAttribute("totalRecords", totalRecords);
 		model.addAttribute("page", page);
@@ -114,7 +114,7 @@ public class ProductController {
 			view = "product/edit?id=" + product.getId();
 		} else {
 			String nameImg = file.getOriginalFilename();
-			if(nameImg == "") {
+			if (nameImg == "") {
 				Product productDetail = (Product) productDao.findById(product.getId());
 				product.setImage(productDetail.getImage());
 			} else {
@@ -126,7 +126,7 @@ public class ProductController {
 					e.printStackTrace();
 				}
 			}
-			
+
 			Product products = (Product) productDao.save(product);
 			if (!Objects.isNull(products)) {
 				view = "redirect:/product";

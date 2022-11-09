@@ -35,6 +35,7 @@ create table tbl_warehouse
 	product_id int FOREIGN KEY REFERENCES tbl_product(id),
 	product_name nvarchar(50),
 	quantity int,
+	price float default(0),
 	status int default(0) 
 )
 go

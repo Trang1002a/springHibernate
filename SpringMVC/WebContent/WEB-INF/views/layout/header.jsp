@@ -223,9 +223,11 @@
 						</span>
 					</a>
 						<ul class="treeview-menu">
-							<li><a href="${pageContext.request.contextPath}/warehouse/importProduct"><i
+						<li><a href="${pageContext.request.contextPath}/warehouse/indexWarehouse"><i
+									class="fa fa-circle-o"></i>Kho hàng</a></li>
+							<li><a href="${pageContext.request.contextPath}/warehouse/importWarehouse"><i
 									class="fa fa-circle-o"></i>Nhập kho</a></li>
-							<li><a href="${pageContext.request.contextPath}/warehouse/exportProduct"><i
+							<li><a href="${pageContext.request.contextPath}/warehouse/exportWarehouse"><i
 							class="fa fa-circle-o"></i>Xuất kho</a></li>
 						</ul></li>
 				</ul>

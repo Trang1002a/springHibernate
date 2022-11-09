@@ -99,11 +99,17 @@ public class CategoryDaoImpl implements IService<Category, Integer> {
 	}
 
 	@Override
-	public Long countTotalRecords() {
+	public Long countTotalRecords(String name) {
 		Session session = sessionFactory.openSession();
 		String countQ = "Select count (c.id) from tbl_category c";
 		Query countQuery = session.createQuery(countQ);
 		return (Long) countQuery.uniqueResult();
+	}
+
+	@Override
+	public List<Category> findAll(int position, int pageSize, String name) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

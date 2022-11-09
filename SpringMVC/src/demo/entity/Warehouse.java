@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tbl_warehouse")
-public class warehouse {
+public class Warehouse {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -27,12 +27,12 @@ public class warehouse {
     @JoinColumn(name = "product_id")
     private Product products;
 	
-	public warehouse() {
+	public Warehouse() {
 		super();
 	}
 
 
-	public warehouse(String product_name, int quantity, int status) {
+	public Warehouse(String product_name, int quantity, int status) {
 		super();
 		this.product_name = product_name;
 		this.quantity = quantity;
