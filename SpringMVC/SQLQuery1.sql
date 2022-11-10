@@ -33,10 +33,10 @@ create table tbl_warehouse
 (
 	id int primary key identity,
 	product_id int FOREIGN KEY REFERENCES tbl_product(id),
-	product_name nvarchar(50),
 	quantity int,
+	status int default(0),
 	price float default(0),
-	status int default(0) 
+	product_name nvarchar(50)
 )
 go
 INsert into tbl_category(name, status) Values

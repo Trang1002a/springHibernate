@@ -92,7 +92,6 @@ public class ProductServiceImpl implements IService<Product, Integer> {
 		}
 	}
 
-	
 	@Override
 	public List<Product> findAll(int position, int pageSize) {
 		// TODO Auto-generated method stub
@@ -111,7 +110,7 @@ public class ProductServiceImpl implements IService<Product, Integer> {
 		}
 		return null;
 	}
-	
+
 	@Override
 	public List<Product> findAll(int position, int pageSize, String name) {
 		// TODO Auto-generated method stub
@@ -119,7 +118,7 @@ public class ProductServiceImpl implements IService<Product, Integer> {
 
 		try {
 			session.beginTransaction();
-			Criteria criteria = session.createCriteria(Product.class).add( Restrictions.like("name", "%" +name +"%"));
+			Criteria criteria = session.createCriteria(Product.class).add(Restrictions.like("name", "%" + name + "%"));
 			criteria.setFirstResult(position);
 			criteria.setMaxResults(pageSize);
 			return criteria.list();
@@ -135,13 +134,34 @@ public class ProductServiceImpl implements IService<Product, Integer> {
 	public Long countTotalRecords(String name) {
 		Session session = sessionFactory.openSession();
 		Long count;
-		if(name == null) {
+		if (name == null) {
 			count = (Long) session.createCriteria(Product.class).setProjection(Projections.rowCount()).uniqueResult();
 		} else {
 			count = (Long) session.createCriteria(Product.class).setProjection(Projections.rowCount())
 					.add(Restrictions.like("name", "%" + name + "%")).uniqueResult();
 		}
 		return count;
+	}
+
+	@Override
+	public List<Product> findByIdIn(List<Integer> ids) {
+		// TODO Auto-generated method stub
+		Session session = sessionFactory.openSession();
+
+		try {
+			session.beginTransaction();
+//					 = session.createCriteria().add(
+//				            Restrictions.eq("id", ids)).setProjection(Projections.property("id")).list();
+			List list = session.createCriteria(Product.class).add(Restrictions.in("id", ids)).list();
+			session.getTransaction().commit();
+			session.close();
+			return list;
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.getTransaction().rollback();
+			session.close();
+		}
+		return null;
 	}
 
 }

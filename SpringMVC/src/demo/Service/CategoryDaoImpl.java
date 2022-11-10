@@ -112,4 +112,10 @@ public class CategoryDaoImpl implements IService<Category, Integer> {
 		return null;
 	}
 
+	@Override
+	public List<Category> findByIdIn(List<Integer> ids) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

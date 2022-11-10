@@ -55,7 +55,7 @@
 
 							<form:errors path="status" cssClass="erorr" />
 						</div>
-						<button type="submit" class="btn btn-primary">Add NEW</button>
+						<button type="submit" class="btn btn-primary">Cập nhật</button>
 					</div>
 					<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
 						<div class="form-group">

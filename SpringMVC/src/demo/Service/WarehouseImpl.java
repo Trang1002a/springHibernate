@@ -38,7 +38,7 @@ public class WarehouseImpl implements IService<Warehouse, Integer> {
 		try {
 			session.beginTransaction();
 			Criteria criteria = session.createCriteria(Warehouse.class)
-					.add(Restrictions.like("name", "%" + name + "%"));
+					.add(Restrictions.like("id", "%" + name + "%"));
 			criteria.setFirstResult(position);
 			criteria.setMaxResults(pageSize);
 			return criteria.list();
@@ -70,6 +70,12 @@ public class WarehouseImpl implements IService<Warehouse, Integer> {
 
 	@Override
 	public Long countTotalRecords(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Warehouse> findByIdIn(List<Integer> ids) {
 		// TODO Auto-generated method stub
 		return null;
 	}

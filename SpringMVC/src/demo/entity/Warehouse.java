@@ -16,8 +16,6 @@ public class Warehouse {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-	@Column(name = "product_name")
-	private String product_name;
 	@Column(name = "quantity")
 	private int quantity;
 	@Column(name = "status")
@@ -32,22 +30,15 @@ public class Warehouse {
 	}
 
 
-	public Warehouse(String product_name, int quantity, int status) {
+
+	public Warehouse(int id, int quantity, int status, Product products) {
 		super();
-		this.product_name = product_name;
+		this.id = id;
 		this.quantity = quantity;
 		this.status = status;
+		this.products = products;
 	}
 
-
-	public String getProduct_name() {
-		return product_name;
-	}
-
-
-	public void setProduct_name(String product_name) {
-		this.product_name = product_name;
-	}
 
 
 	public int getQuantity() {
@@ -67,6 +58,26 @@ public class Warehouse {
 
 	public void setStatus(int status) {
 		this.status = status;
+	}
+
+
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	public Product getProducts() {
+		return products;
+	}
+
+
+	public void setProducts(Product products) {
+		this.products = products;
 	}
 	
 	

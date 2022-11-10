@@ -130,7 +130,7 @@ public class Product {
 	public void setWarehouses(List<Warehouse> warehouses) {
 		this.warehouses = warehouses;
 	}
-	
+
 	
 
 

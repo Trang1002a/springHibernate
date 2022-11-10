@@ -48,7 +48,7 @@
 					<form:errors path="status" cssClass="erorr" />
 				</div>
 
-				<button type="submit" class="btn btn-primary">Add New</button>
+				<button type="submit" class="btn btn-primary">Thêm mới</button>
 			</form:form>
 		</div>
 	</div>
